@@ -16,6 +16,7 @@ public class Shop {
         //如果有面包，不生产
         if(sum!=0){
             try {
+                //有库存，生产者等待，等消费者通知
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -38,6 +39,7 @@ public class Shop {
     public synchronized void sale(){
         if(sum==0){
             try {
+                //没有东西，消费者等待生产者来通知他
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
